@@ -2,16 +2,16 @@ const express=require("express")
 const app=express()
 const jwt=require("jsonwebtoken")
 const bcrypt=require("bcrypt")
-const cookieparser=require("cookie-parser")
+const cookieParser=require("cookie-parser")
 const userSchema=require("../PR1/models/user-model")
 
 app.set("viewing engine","ejs")
 
 app.use(express.json())
 app.use(express.urlencoded({extended:true}))
-app.use(cookieparser())
+app.use(cookieParser())
 
-
+ 
 app.post("/create",async (req,res)=>{
     var user=await userSchema.findOne({email:req.body.email})
     if(user){
